@@ -1,11 +1,11 @@
-FROM adoptopenjdk/openjdk11-openj9
+FROM debian:buster-20191118
 
 RUN \
   apt update \
-  && apt install -y wget unzip \
-  && wget https://services.gradle.org/distributions/gradle-5.1.1-bin.zip \
-  && unzip gradle-5.1.1-bin.zip -d /opt \
-  && rm gradle-5.1.1-bin.zip \
+  && apt install -y wget unzip git openjdk-11-jdk-headless \
+  && wget https://services.gradle.org/distributions/gradle-6.0.1-bin.zip \
+  && unzip gradle-6.0.1-bin.zip -d /opt \
+  && rm gradle-6.0.1-bin.zip \
   && rm -rf /var/cache/apt
-ENV GRADLE_HOME="/opt/gradle-5.1.1"
-ENV PATH="${PATH}:/opt/gradle-5.1.1/bin"
+ENV GRADLE_HOME="/opt/gradle-6.0.1"
+ENV PATH="${PATH}:/opt/gradle-6.0.1/bin"
